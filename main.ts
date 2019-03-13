@@ -71,7 +71,7 @@ namespace Grove {
     * Set the speed of mini fan
     */
     //% blockId=minifan
-    //% block="Mini Fan | $analogport| speed $speed"
+    //% block="Mini Fan$analogport|: set speed to $speed"
     //% speed.min=0 speed.max=100
     //% speed.defl=50
     //% group="Motor"
@@ -84,7 +84,7 @@ namespace Grove {
     * Turn on or off the mini fan motor
     */
     //% blockId=minifanOnOff
-    //% block="Mini Fan | at $groveport| $on"
+    //% block="Mini Fan$groveport|: turn $on"
     //% on.shadow="toggleOnOff"
     //% on.defl="true"
     //% group="Motor"
@@ -101,7 +101,7 @@ namespace Grove {
     * Set the servo angle
     */
     //% blockId=servo
-    //% block="Servo | $analogport|set angle to $angle|°"
+    //% block="Servo$analogport|: set angle to $angle|°"
     //% angle.min=0 angle.max=180
     //% angle.defl=90
     //% group="Motor"
