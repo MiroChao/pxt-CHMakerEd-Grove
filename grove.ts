@@ -37,7 +37,7 @@ enum DistanceUnit {
  */
 //% color=190 icon="\uf126" block= "Grove"
 //% groups="['Sensor', 'Motor', 'Display']"
-namespace GroveModule {
+namespace Grove {
 
     /**
     * Get the distance from Grove-Ultrasonic Sensor
