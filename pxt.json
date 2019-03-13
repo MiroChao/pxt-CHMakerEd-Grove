@@ -4,11 +4,14 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "radio": "*"
+        "radio": "*",
+        "BitMaker": "github:MiroChao/pxt-BitMaker",
+        "neopixel": "github:microsoft/pxt-neopixel#v0.6.10"
     },
     "files": [
         "README.md",
-        "main.ts"
+        "grove.ts",
+        "_locales/zh/grove-strings.json"
     ],
     "testFiles": [
         "test.ts"
