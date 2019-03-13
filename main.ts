@@ -4,7 +4,7 @@ enum GrovePort {
     //% block="P1"
     P1 = DigitalPin.P1,
     //% block="P2"
-    P2 = DigitalPin.P3,
+    P2 = DigitalPin.P2,
     //% block="P8"
     P8 = DigitalPin.P8,
     //% block="P12"
