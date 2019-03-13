@@ -37,10 +37,10 @@ enum DistanceUnit {
 namespace Grove {
 
     /**
-    * Get the distance from Grove - Ultrasonic Sensor
+    * Get the distance from Grove-Ultrasonic Sensor
     */
     //% blockId=measureInCentimeters
-    //% block="Ultrasonic Sensor at $groveport| distance in $Unit"
+    //% block="Ultrasonic Sensor $groveport| distance in $Unit"
     //% group="Sensor"
     //% weight=100
     export function measureInCentimeters(groveport: GrovePort, Unit: DistanceUnit): number {
@@ -71,7 +71,7 @@ namespace Grove {
     * Set the speed of mini fan
     */
     //% blockId=minifan
-    //% block="Mini Fan at $analogport| speed $speed"
+    //% block="Mini Fan $analogport| speed to $speed"
     //% speed.min=0 speed.max=100
     //% speed.defl=50
     //% group="Motor"
@@ -81,7 +81,7 @@ namespace Grove {
     }
 
     /**
-    * turn on or off the mini fan motor
+    * Turn on or off the mini fan motor
     */
     //% blockId=minifanOnOff
     //% block="Mini Fan at $groveport| $on"
@@ -95,6 +95,18 @@ namespace Grove {
         } else {
             pins.digitalWritePin(<DigitalPin>port, 0);
         }
+    }
 
+    /**
+    * Set the servo angle
+    */
+    //% blockId=servo
+    //% block="set servo $analogport| angle to $angle|°"
+    //% angle.min=0 angle.max=180
+    //% angle.defl=90
+    //% group="Motor"
+    export function servo(analogport: AnalogPort, angle: number) {
+        let port: number = analogport;
+        pins.servoWritePin(<AnalogPin>port, pins.map(angle, 0, 180, 10, 180));
     }
 }
