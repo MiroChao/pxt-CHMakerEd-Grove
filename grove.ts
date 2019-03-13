@@ -16,7 +16,7 @@ enum GrovePin {
     P16 = DigitalPin.P16
 }
 
-enum AnalogGrove {
+enum GroveAnalogPin {
     //% block="P0"
     P0 = AnalogPin.P0,
     //% block="P1"
@@ -37,7 +37,7 @@ enum DistanceUnit {
  */
 //% color=190 icon="\uf126" block= "Grove"
 //% groups="['Sensor', 'Motor', 'Display']"
-namespace Grove {
+namespace GroveModule {
 
     /**
     * Get the distance from Grove-Ultrasonic Sensor
@@ -78,7 +78,7 @@ namespace Grove {
     //% speed.min=0 speed.max=100
     //% speed.defl=50
     //% group="Motor"
-    export function minifan(analogport: AnalogGrove, speed: number) {
+    export function minifan(analogport: GroveAnalogPin, speed: number) {
         let port: number = analogport;
         pins.analogWritePin(<AnalogPin>port, pins.map(speed, 0, 100, 0, 1023));
     }
@@ -108,7 +108,7 @@ namespace Grove {
     //% angle.min=0 angle.max=180
     //% angle.defl=90
     //% group="Motor"
-    export function servo(analogport: AnalogGrove, angle: number) {
+    export function servo(analogport: GroveAnalogPin, angle: number) {
         let port: number = analogport;
         pins.servoWritePin(<AnalogPin>port, pins.map(angle, 0, 180, 10, 180));
     }
