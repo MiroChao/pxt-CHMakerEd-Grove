@@ -1,24 +1,8 @@
-enum GrovePort {
-    //% block="P0"
-    P0 = DigitalPin.P0,
-    //% block="P1"
-    P1 = DigitalPin.P1,
-    //% block="P2"
-    P2 = DigitalPin.P2,
-    //% block="P8"
-    P8 = DigitalPin.P8,
-    //% block="P16"
-    P16 = DigitalPin.P16
-}
-
-enum AnalogPort {
-    //% block="P0"
-    P0 = AnalogPin.P0,
-    //% block="P1"
-    P1 = AnalogPin.P1,
-    //% block="P2"
-    P2 = AnalogPin.P2
-}
+/*****************************************************************************
+* | Description :	Chaihuo Grove extension for micro:bit
+* | Developer   :   CH Makered
+* | More Info   :	http://chmakered.com/
+******************************************************************************/
 
 enum DistanceUnit {
     //% block="cm"
@@ -41,19 +25,18 @@ namespace Grove {
     //% block="Ultrasonic Sensor $groveport|: distance in $Unit"
     //% group="Sensor"
     //% weight=100
-    export function measureInCentimeters(groveport: GrovePort, Unit: DistanceUnit): number {
+    export function measureInCentimeters(groveport: DigitalPin, Unit: DistanceUnit): number {
         let duration = 0;
         let distance = 0;
         let distanceBackup = 0;
-        let port: number = groveport;
 
-        pins.digitalWritePin(<DigitalPin>port, 0);
+        pins.digitalWritePin(groveport, 0);
         control.waitMicros(2);
-        pins.digitalWritePin(<DigitalPin>port, 1);
+        pins.digitalWritePin(groveport, 1);
         control.waitMicros(10);
-        pins.digitalWritePin(<DigitalPin>port, 0);
+        pins.digitalWritePin(groveport, 0);
 
-        duration = pins.pulseIn(<DigitalPin>port, PulseValue.High, 50000);
+        duration = pins.pulseIn(groveport, PulseValue.High, 50000);
 
         if (Unit == DistanceUnit.cm) distance = duration * 153 / 58 / 100;
         else distance = duration * 153 / 148 / 100;
@@ -73,9 +56,9 @@ namespace Grove {
     //% speed.min=0 speed.max=100
     //% speed.defl=50
     //% group="Motor"
-    export function minifan(analogport: AnalogPort, speed: number) {
-        let port: number = analogport;
-        pins.analogWritePin(<AnalogPin>port, pins.map(speed, 0, 100, 0, 1023));
+    export function minifan(analogport: AnalogPin, speed: number) {
+        
+        pins.analogWritePin(analogport, pins.map(speed, 0, 100, 0, 1023));
     }
 
     /**
@@ -86,12 +69,11 @@ namespace Grove {
     //% on.shadow="toggleOnOff"
     //% on.defl="true"
     //% group="Motor"
-    export function minifanOnOff(groveport: GrovePort, on: boolean) {
-        let port: number = groveport;
+    export function minifanOnOff(groveport: DigitalPin, on: boolean) {
         if (on) {
-            pins.digitalWritePin(<DigitalPin>port, 1);
+            pins.digitalWritePin(groveport, 1);
         } else {
-            pins.digitalWritePin(<DigitalPin>port, 0);
+            pins.digitalWritePin(groveport, 0);
         }
     }
 
@@ -103,8 +85,7 @@ namespace Grove {
     //% angle.min=0 angle.max=180
     //% angle.defl=90
     //% group="Motor"
-    export function servo(analogport: AnalogPort, angle: number) {
-        let port: number = analogport;
-        pins.servoWritePin(<AnalogPin>port, pins.map(angle, 0, 180, 10, 180));
+    export function servo(analogport: AnalogPin, angle: number) {
+        pins.servoWritePin(analogport, pins.map(angle, 0, 180, 10, 180));
     }
 }
