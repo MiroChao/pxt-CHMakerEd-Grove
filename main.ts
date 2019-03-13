@@ -4,7 +4,7 @@ enum GrovePort {
     //% block="P1"
     P1 = DigitalPin.P1,
     //% block="P2"
-    P2 = DigitalPin.P2,
+    P2 = DigitalPin.P3,
     //% block="P8"
     P8 = DigitalPin.P8,
     //% block="P12"
@@ -43,35 +43,20 @@ namespace Grove {
     //% block="Ultrasonic Sensor at $grove| distance in $Unit"
     //% group="Grove Modules"
     //% weight=100
-    export function measureInCentimeters(grove: GrovePort, Unit: DistanceUnit): number {
+    export function measureInCentimeters(groveport: GrovePort, Unit: DistanceUnit): number {
         let duration = 0;
         let distance = 0;
         let distanceBackup = 0;
+        let grove: number = groveport;
 
-        selectPins.grove = grove;
-
-        selectPins.high = false;
-        selectPins.select_grove_port(1);
+        pins.digitalWritePin(<DigitalPin>grove, 0);
         control.waitMicros(2);
-        selectPins.high = true;
-        selectPins.select_grove_port(1);
+        pins.digitalWritePin(<DigitalPin>grove, 1);
         control.waitMicros(10);
-        selectPins.high = false;
-        selectPins.select_grove_port(1);
+        pins.digitalWritePin(<DigitalPin>grove, 0);
 
-        if (selectPins.grove == GrovePort.P0) {
-            duration = pins.pulseIn(DigitalPin.P0, PulseValue.High, 50000); // Max duration 50 ms;
-        } else if (selectPins.grove == GrovePort.P1) {
-            duration = pins.pulseIn(DigitalPin.P1, PulseValue.High, 50000);
-        } else if (selectPins.grove == GrovePort.P2) {
-            duration = pins.pulseIn(DigitalPin.P2, PulseValue.High, 50000);
-        } else if (selectPins.grove == GrovePort.P8) {
-            duration = pins.pulseIn(DigitalPin.P8, PulseValue.High, 50000);
-        } else if (selectPins.grove == GrovePort.P12) {
-            duration = pins.pulseIn(DigitalPin.P12, PulseValue.High, 50000);
-        } else if (selectPins.grove == GrovePort.P16) {
-            duration = pins.pulseIn(DigitalPin.P16, PulseValue.High, 50000);
-        }
+        duration = pins.pulseIn(<DigitalPin>grove, PulseValue.High, 50000);
+
 
         if (Unit == DistanceUnit.cm) distance = duration * 153 / 58 / 100;
         else distance = duration * 153 / 148 / 100;
@@ -81,5 +66,23 @@ namespace Grove {
         basic.pause(50);
 
         return distance;
+    }
+
+    /**
+    * set the status of a digital output to high or low
+    */
+    //% blockId=set_Dout
+    //% block="set digital pin $grove| to $high"
+    //% high.shadow="toggleHighLow"
+    //% high.defl="true"
+    //% group="Digital"
+    //% weight=10
+    export function set_Dout(groveport: GrovePort, high: boolean) {
+        let grove: number = groveport;
+        if (high) {
+            pins.digitalWritePin(grove, 1);
+        } else {
+            pins.digitalWritePin(grove, 0);
+        }
     }
 }
