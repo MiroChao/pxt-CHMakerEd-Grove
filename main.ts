@@ -40,7 +40,7 @@ namespace Grove {
     * Get the distance from Grove - Ultrasonic Sensor
     */
     //% blockId=measureInCentimeters
-    //% block="Ultrasonic Sensor at $grove| distance in $Unit"
+    //% block="Ultrasonic Sensor at $groveport| distance in $Unit"
     //% group="Grove Modules"
     //% weight=100
     export function measureInCentimeters(groveport: GrovePort, Unit: DistanceUnit): number {
@@ -72,7 +72,7 @@ namespace Grove {
     * set the status of a digital output to high or low
     */
     //% blockId=set_Dout
-    //% block="set digital pin $grove| to $high"
+    //% block="set digital pin $groveport| to $high"
     //% high.shadow="toggleHighLow"
     //% high.defl="true"
     //% group="Digital"
