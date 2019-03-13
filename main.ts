@@ -84,6 +84,7 @@ namespace Grove {
     * turn on or off the mini fan motor
     */
     //% blockId=minifanOnOff
+
     //% block="Mini Fan at $groveport| $on"
     //% on.shadow="toggleOnOff"
     //% on.defl="on"
