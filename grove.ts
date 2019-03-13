@@ -16,7 +16,7 @@ enum GrovePin {
     P16 = DigitalPin.P16
 }
 
-enum AnalogPin {
+enum AnalogGrove {
     //% block="P0"
     P0 = AnalogPin.P0,
     //% block="P1"
@@ -78,7 +78,7 @@ namespace Grove {
     //% speed.min=0 speed.max=100
     //% speed.defl=50
     //% group="Motor"
-    export function minifan(analogport: AnalogPin, speed: number) {
+    export function minifan(analogport: AnalogGrove, speed: number) {
         let port: number = analogport;
         pins.analogWritePin(<AnalogPin>port, pins.map(speed, 0, 100, 0, 1023));
     }
@@ -108,7 +108,7 @@ namespace Grove {
     //% angle.min=0 angle.max=180
     //% angle.defl=90
     //% group="Motor"
-    export function servo(analogport: AnalogPin, angle: number) {
+    export function servo(analogport: AnalogGrove, angle: number) {
         let port: number = analogport;
         pins.servoWritePin(<AnalogPin>port, pins.map(angle, 0, 180, 10, 180));
     }
