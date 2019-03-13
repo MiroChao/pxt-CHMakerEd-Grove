@@ -1,12 +1,10 @@
 {
-    "name": "pxt-chmakered-grove",
+    "name": "chmakered-grove",
     "version": "0.0.0",
     "description": "",
     "dependencies": {
         "core": "*",
-        "radio": "*",
-        "BitMaker": "github:MiroChao/pxt-BitMaker",
-        "neopixel": "github:microsoft/pxt-neopixel#v0.6.10"
+        "radio": "*"
     },
     "files": [
         "README.md",
