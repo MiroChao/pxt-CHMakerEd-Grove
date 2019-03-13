@@ -40,7 +40,7 @@ namespace Grove {
     * Get the distance from Grove-Ultrasonic Sensor
     */
     //% blockId=measureInCentimeters
-    //% block="Ultrasonic Sensor $groveport| distance in $Unit"
+    //% block="Ultrasonic Sensor $groveport|: distance in $Unit"
     //% group="Sensor"
     //% weight=100
     export function measureInCentimeters(groveport: GrovePort, Unit: DistanceUnit): number {
