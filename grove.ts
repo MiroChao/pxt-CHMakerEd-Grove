@@ -3,7 +3,7 @@
 * | Developer   :   CH Makered
 * | More Info   :	http://chmakered.com/
 ******************************************************************************/
-enum Grove {
+enum GrovePin {
     //% block="P0"
     P0 = DigitalPin.P0,
     //% block="P1"
@@ -16,7 +16,7 @@ enum Grove {
     P16 = DigitalPin.P16
 }
 
-enum Analog {
+enum AnalogPin {
     //% block="P0"
     P0 = AnalogPin.P0,
     //% block="P1"
@@ -46,7 +46,7 @@ namespace Grove {
     //% block="Ultrasonic Sensor $groveport|: distance in $Unit"
     //% group="Sensor"
     //% weight=100
-    export function measureInCentimeters(groveport: Grove, Unit: DistanceUnit): number {
+    export function measureInCentimeters(groveport: GrovePin, Unit: DistanceUnit): number {
         let duration = 0;
         let distance = 0;
         let distanceBackup = 0;
@@ -78,7 +78,7 @@ namespace Grove {
     //% speed.min=0 speed.max=100
     //% speed.defl=50
     //% group="Motor"
-    export function minifan(analogport: Analog, speed: number) {
+    export function minifan(analogport: AnalogPin, speed: number) {
         let port: number = analogport;
         pins.analogWritePin(<AnalogPin>port, pins.map(speed, 0, 100, 0, 1023));
     }
@@ -91,7 +91,7 @@ namespace Grove {
     //% on.shadow="toggleOnOff"
     //% on.defl="true"
     //% group="Motor"
-    export function minifanOnOff(groveport: Grove, on: boolean) {
+    export function minifanOnOff(groveport: GrovePin, on: boolean) {
         let port: number = groveport;
         if (on) {
             pins.digitalWritePin(<DigitalPin>port, 1);
@@ -108,7 +108,7 @@ namespace Grove {
     //% angle.min=0 angle.max=180
     //% angle.defl=90
     //% group="Motor"
-    export function servo(analogport: Analog, angle: number) {
+    export function servo(analogport: AnalogPin, angle: number) {
         let port: number = analogport;
         pins.servoWritePin(<AnalogPin>port, pins.map(angle, 0, 180, 10, 180));
     }
