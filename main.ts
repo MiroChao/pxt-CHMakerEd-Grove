@@ -80,9 +80,9 @@ namespace Grove {
     export function set_Dout(groveport: GrovePort, high: boolean) {
         let grove: number = groveport;
         if (high) {
-            pins.digitalWritePin(grove, 1);
+            pins.digitalWritePin(<DigitalPin>grove, 1);
         } else {
-            pins.digitalWritePin(grove, 0);
+            pins.digitalWritePin(<DigitalPin>grove, 0);
         }
     }
 }
