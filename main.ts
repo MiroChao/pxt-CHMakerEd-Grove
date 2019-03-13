@@ -30,7 +30,7 @@ enum DistanceUnit {
 }
 
 /**
- * Provides access to CHMaker Ed Grove blocks for pxt-microbit
+ * Provides access to CHMakerEd Grove blocks for pxt-microbit
  */
 //% color=190 icon="\uf126" block= "Grove"
 //% groups="['Sensor', 'Motor', 'Display']"
