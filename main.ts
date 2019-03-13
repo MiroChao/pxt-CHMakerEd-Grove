@@ -41,22 +41,21 @@ namespace Grove {
     */
     //% blockId=measureInCentimeters
     //% block="Ultrasonic Sensor at $groveport| distance in $Unit"
-    //% group="Grove Modules"
+    //% group="Sensor"
     //% weight=100
     export function measureInCentimeters(groveport: GrovePort, Unit: DistanceUnit): number {
         let duration = 0;
         let distance = 0;
         let distanceBackup = 0;
-        let grove: number = groveport;
+        let port: number = groveport;
 
-        pins.digitalWritePin(<DigitalPin>grove, 0);
+        pins.digitalWritePin(<DigitalPin>port, 0);
         control.waitMicros(2);
-        pins.digitalWritePin(<DigitalPin>grove, 1);
+        pins.digitalWritePin(<DigitalPin>port, 1);
         control.waitMicros(10);
-        pins.digitalWritePin(<DigitalPin>grove, 0);
+        pins.digitalWritePin(<DigitalPin>port, 0);
 
-        duration = pins.pulseIn(<DigitalPin>grove, PulseValue.High, 50000);
-
+        duration = pins.pulseIn(<DigitalPin>port, PulseValue.High, 50000);
 
         if (Unit == DistanceUnit.cm) distance = duration * 153 / 58 / 100;
         else distance = duration * 153 / 148 / 100;
@@ -69,20 +68,33 @@ namespace Grove {
     }
 
     /**
-    * set the status of a digital output to high or low
+    * Set the speed of mini fan
     */
-    //% blockId=set_Dout
-    //% block="set digital pin $groveport| to $high"
-    //% high.shadow="toggleHighLow"
-    //% high.defl="true"
-    //% group="Digital"
-    //% weight=10
-    export function set_Dout(groveport: GrovePort, high: boolean) {
-        let grove: number = groveport;
-        if (high) {
-            pins.digitalWritePin(<DigitalPin>grove, 1);
+    //% blockId=minifan
+    //% block="Mini Fan at $analogport| speed $speed"
+    //% speed.min=0 speed.max=100
+    //% speed.defl=50
+    //% group="Motor"
+    export function minifan(analogport: AnalogPort, speed: number) {
+        let port: number = analogport;
+        pins.analogWritePin(<AnalogPin>port, pins.map(speed, 0, 100, 0, 1023));
+    }
+
+    /**
+    * turn on or off the mini fan motor
+    */
+    //% blockId=minifanOnOff
+    //% block="Mini Fan at $groveport| $on"
+    //% on.shadow="toggleOnOff"
+    //% on.defl="on"
+    //% group="Motor"
+    export function minifanOnOff(groveport: GrovePort, on: boolean) {
+        let port: number = groveport;
+        if (on) {
+            pins.digitalWritePin(<DigitalPin>port, 1);
         } else {
-            pins.digitalWritePin(<DigitalPin>grove, 0);
+            pins.digitalWritePin(<DigitalPin>port, 0);
         }
+
     }
 }
