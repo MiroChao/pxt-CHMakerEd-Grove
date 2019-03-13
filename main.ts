@@ -84,9 +84,10 @@ namespace Grove {
     * turn on or off the mini fan motor
     */
     //% blockId=minifanOnOff
-    //% block="Mini Fan at $analogport| $high"
-    //% On.shadow="toggleOnOff"
-    //% On.defl="on"
+
+    //% block="Mini Fan at $groveport| $on"
+    //% on.shadow="toggleOnOff"
+    //% on.defl="on"
     //% group="Motor"
     export function minifanOnOff(groveport: GrovePort, on: boolean) {
         let port: number = groveport;
