@@ -12,6 +12,8 @@ enum GrovePin {
     P2 = DigitalPin.P2,
     //% block="P8"
     P8 = DigitalPin.P8,
+    //% block="P12"
+    P12 = DigitalPin.P12,
     //% block="P16"
     P16 = DigitalPin.P16
 }
